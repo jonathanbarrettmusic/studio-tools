@@ -3,44 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Musical Terms | Grades 1-8</title>
+  <title>Musikfachausdrucklernapparat</title>
   <style>
     #mt-app, #mt-app * { box-sizing: border-box !important; }
     #mt-app {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
       font-size: 15px !important; line-height: 1.6 !important;
       color: #1a1a18 !important; background: #f0efea !important;
-      padding: 1.5rem !important; max-width: 780px !important; margin: 0 auto !important;
+      padding: 1.25rem !important; max-width: 680px !important; margin: 0 auto !important;
     }
     @media (prefers-color-scheme: dark) { #mt-app { color: #f0efe8 !important; background: #252523 !important; } }
 
-    #mt-app .mt-hd { display: block !important; width: 100% !important; margin: 0 0 1.25rem !important; padding: 0 !important; }
-    #mt-app .mt-hd-title { display: block !important; font-size: 22px !important; font-weight: 600 !important; line-height: 1.3 !important; margin: 0 0 4px !important; padding: 0 !important; color: #1a1a18 !important; }
-    #mt-app .mt-hd-sub { display: block !important; font-size: 14px !important; color: #6b6b67 !important; margin: 0 !important; padding: 0 !important; line-height: 1.5 !important; }
+    #mt-app .mt-hd { display: block !important; margin: 0 0 1.1rem !important; padding: 0 !important; }
+    #mt-app .mt-hd-title { display: block !important; font-size: 20px !important; font-weight: 600 !important; line-height: 1.3 !important; margin: 0 0 3px !important; padding: 0 !important; color: #1a1a18 !important; }
+    #mt-app .mt-hd-sub { display: block !important; font-size: 13px !important; color: #6b6b67 !important; margin: 0 !important; padding: 0 !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-hd-title { color: #f0efe8 !important; } }
 
-    #mt-app .mt-ctrl { display: block !important; width: 100% !important; margin: 0 0 1.25rem !important; padding: 0 !important; }
-    #mt-app .mt-ctrl-row { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 10px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+    #mt-app .mt-ctrl { display: block !important; width: 100% !important; margin: 0 0 1.1rem !important; }
+    #mt-app .mt-ctrl-row { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; align-items: center !important; }
     #mt-app .mt-sel {
-      display: inline-block !important; min-height: 44px !important; min-width: 140px !important;
-      padding: 8px 34px 8px 14px !important; border-radius: 8px !important;
+      display: inline-block !important; min-height: 42px !important; min-width: 130px !important;
+      padding: 7px 32px 7px 12px !important; border-radius: 8px !important;
       border: 1px solid rgba(0,0,0,0.25) !important; background-color: #ffffff !important;
-      color: #1a1a18 !important; font-size: 14px !important; font-family: inherit !important;
+      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
       cursor: pointer !important; line-height: 1.5 !important;
       -webkit-appearance: none !important; appearance: none !important;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b67' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-      background-repeat: no-repeat !important; background-position: right 12px center !important;
-      flex-shrink: 0 !important;
+      background-repeat: no-repeat !important; background-position: right 10px center !important;
     }
     @media (prefers-color-scheme: dark) { #mt-app .mt-sel { background-color: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.22) !important; } }
 
-    #mt-app .mt-tabs { display: flex !important; flex-direction: row !important; gap: 8px !important; margin: 0 0 1.25rem !important; padding: 0 !important; }
+    #mt-app .mt-tabs { display: flex !important; flex-direction: row !important; gap: 8px !important; margin: 0 0 1.1rem !important; }
     #mt-app .mt-tab {
       display: inline-flex !important; align-items: center !important; justify-content: center !important;
-      height: 38px !important; padding: 0 20px !important; border-radius: 8px !important;
-      border: 1px solid rgba(0,0,0,0.12) !important; background: transparent !important;
-      color: #6b6b67 !important; font-size: 13px !important; font-family: inherit !important;
-      cursor: pointer !important; text-decoration: none !important;
+      height: 36px !important; padding: 0 18px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.14) !important; background: transparent !important;
+      color: #6b6b67 !important; font-size: 13px !important; font-family: inherit !important; cursor: pointer !important;
     }
     #mt-app .mt-tab:hover { background: #e6e5e1 !important; }
     #mt-app .mt-tab.active { background: #e6e5e1 !important; color: #1a1a18 !important; border-color: rgba(0,0,0,0.25) !important; }
@@ -49,19 +47,34 @@
       #mt-app .mt-tab.active { background: #2e2e2b !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.22) !important; }
     }
 
-    #mt-app .mt-count { display: block !important; font-size: 12px !important; color: #9a9a96 !important; margin: 0 0 1rem !important; }
+    #mt-app .mt-nav-row {
+      display: flex !important; flex-direction: row !important; align-items: center !important;
+      justify-content: space-between !important; margin: 0 0 0.85rem !important;
+    }
+    #mt-app .mt-nav-count { font-size: 13px !important; color: #9a9a96 !important; }
+    #mt-app .mt-arrow-btn {
+      display: inline-flex !important; align-items: center !important; justify-content: center !important;
+      width: 38px !important; height: 38px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.20) !important; background: #ffffff !important;
+      color: #1a1a18 !important; font-size: 16px !important; cursor: pointer !important; flex-shrink: 0 !important;
+    }
+    #mt-app .mt-arrow-btn:hover { background: #e6e5e1 !important; }
+    #mt-app .mt-arrow-btn:disabled { opacity: 0.28 !important; cursor: default !important; }
+    @media (prefers-color-scheme: dark) {
+      #mt-app .mt-arrow-btn { background: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.20) !important; }
+      #mt-app .mt-arrow-btn:hover { background: #2e2e2b !important; }
+    }
 
-    #mt-app .mt-grid { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)) !important; gap: 12px !important; }
     #mt-app .mt-card {
       display: block !important; background: #ffffff !important;
-      border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 12px !important;
-      padding: 1rem !important; cursor: pointer !important;
+      border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 14px !important;
+      padding: 1.5rem !important; margin: 0 0 0.85rem !important;
+      min-height: 320px !important;
     }
-    #mt-app .mt-card:hover { border-color: rgba(0,0,0,0.28) !important; }
-    #mt-app .mt-card.sel { border: 2px solid #185FA5 !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-card { background: #1c1c1a !important; border-color: rgba(255,255,255,0.10) !important; } }
 
-    #mt-app .mt-lb { display: inline-block !important; font-size: 11px !important; font-weight: 600 !important; padding: 2px 8px !important; border-radius: 6px !important; margin: 0 0 8px !important; line-height: 1.5 !important; }
+    #mt-app .mt-card-top { display: flex !important; align-items: center !important; gap: 8px !important; margin: 0 0 1rem !important; flex-wrap: wrap !important; }
+    #mt-app .mt-lb { display: inline-block !important; font-size: 11px !important; font-weight: 600 !important; padding: 3px 9px !important; border-radius: 6px !important; line-height: 1.5 !important; }
     #mt-app .mt-it { background: #EEEDFE !important; color: #3C3489 !important; }
     #mt-app .mt-de { background: #FAEEDA !important; color: #633806 !important; }
     #mt-app .mt-fr { background: #E1F5EE !important; color: #085041 !important; }
@@ -70,65 +83,47 @@
       #mt-app .mt-de { background: #412402 !important; color: #FAC775 !important; }
       #mt-app .mt-fr { background: #04342C !important; color: #9FE1CB !important; }
     }
-    #mt-app .mt-cg { display: block !important; font-size: 11px !important; color: #9a9a96 !important; margin: 0 0 4px !important; }
-    #mt-app .mt-ct { display: block !important; font-size: 15px !important; font-weight: 600 !important; color: #1a1a18 !important; margin: 0 0 3px !important; }
-    #mt-app .mt-cm { display: block !important; font-size: 12px !important; color: #6b6b67 !important; line-height: 1.5 !important; margin: 0 !important; }
-    #mt-app .mt-cc { display: block !important; font-size: 11px !important; color: #9a9a96 !important; margin: 6px 0 0 !important; }
-    @media (prefers-color-scheme: dark) { #mt-app .mt-ct { color: #f0efe8 !important; } }
-
-    #mt-app .mt-dp {
-      display: block !important; background: #ffffff !important;
-      border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 12px !important;
-      padding: 1.5rem !important; margin: 0 0 1.5rem !important;
-    }
-    @media (prefers-color-scheme: dark) { #mt-app .mt-dp { background: #1c1c1a !important; border-color: rgba(255,255,255,0.10) !important; } }
-    #mt-app .mt-dm { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; align-items: center !important; margin: 0 0 1rem !important; }
-    #mt-app .mt-chip { display: inline-block !important; font-size: 11px !important; font-weight: 500 !important; padding: 3px 10px !important; border-radius: 6px !important; line-height: 1.5 !important; background: #e6e5e1 !important; color: #6b6b67 !important; }
+    #mt-app .mt-chip { display: inline-block !important; font-size: 11px !important; padding: 3px 9px !important; border-radius: 6px !important; line-height: 1.5 !important; background: #e6e5e1 !important; color: #6b6b67 !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-chip { background: #2e2e2b !important; color: #9a9a96 !important; } }
-    #mt-app .mt-dp-h2 { display: block !important; font-size: 24px !important; font-weight: 600 !important; color: #1a1a18 !important; margin: 0 0 4px !important; padding: 0 !important; }
-    @media (prefers-color-scheme: dark) { #mt-app .mt-dp-h2 { color: #f0efe8 !important; } }
-    #mt-app .mt-ph { display: block !important; font-size: 15px !important; font-style: italic !important; color: #6b6b67 !important; margin: 0 0 6px !important; }
-    #mt-app .mt-ml { display: block !important; font-size: 16px !important; color: #6b6b67 !important; margin: 6px 0 0 !important; }
-    #mt-app .mt-sec { display: block !important; margin: 1rem 0 0 !important; padding: 1rem 0 0 !important; border-top: 1px solid rgba(0,0,0,0.10) !important; }
-    @media (prefers-color-scheme: dark) { #mt-app .mt-sec { border-top-color: rgba(255,255,255,0.08) !important; } }
-    #mt-app .mt-sec-h { display: block !important; font-size: 11px !important; font-weight: 600 !important; color: #9a9a96 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; margin: 0 0 6px !important; padding: 0 !important; }
-    #mt-app .mt-sec-p { display: block !important; font-size: 14px !important; line-height: 1.7 !important; color: #1a1a18 !important; margin: 0 !important; }
+
+    #mt-app .mt-term { display: block !important; font-size: 32px !important; font-weight: 700 !important; color: #1a1a18 !important; margin: 0 0 4px !important; letter-spacing: -0.5px !important; line-height: 1.2 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-term { color: #f0efe8 !important; } }
+    #mt-app .mt-ph { display: block !important; font-size: 14px !important; font-style: italic !important; color: #9a9a96 !important; margin: 0 0 4px !important; }
+    #mt-app .mt-meaning { display: block !important; font-size: 18px !important; color: #6b6b67 !important; margin: 0 0 1.1rem !important; }
+
+    #mt-app .mt-divider { display: block !important; height: 1px !important; background: rgba(0,0,0,0.08) !important; margin: 0 0 1rem !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-divider { background: rgba(255,255,255,0.08) !important; } }
+
+    #mt-app .mt-sec { display: block !important; margin: 0 0 0.9rem !important; }
+    #mt-app .mt-sec-h { display: block !important; font-size: 10px !important; font-weight: 700 !important; color: #9a9a96 !important; text-transform: uppercase !important; letter-spacing: 0.08em !important; margin: 0 0 4px !important; }
+    #mt-app .mt-sec-p { display: block !important; font-size: 14px !important; line-height: 1.65 !important; color: #1a1a18 !important; margin: 0 !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-sec-p { color: #f0efe8 !important; } }
-    #mt-app .mt-ex { display: block !important; background: #ebebea !important; border-radius: 8px !important; padding: 0.75rem 1rem !important; font-size: 13px !important; line-height: 1.6 !important; color: #6b6b67 !important; }
+    #mt-app .mt-ex { display: block !important; background: #ebebea !important; border-radius: 8px !important; padding: 0.6rem 0.9rem !important; font-size: 13px !important; line-height: 1.6 !important; color: #6b6b67 !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-ex { background: #252523 !important; } }
 
-    #mt-app .mt-btn {
-      display: inline-flex !important; align-items: center !important;
-      min-height: 38px !important; padding: 6px 16px !important; border-radius: 8px !important;
-      border: 1px solid rgba(0,0,0,0.22) !important; background: #ffffff !important;
-      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
-      cursor: pointer !important; white-space: nowrap !important; text-decoration: none !important;
-    }
-    #mt-app .mt-btn:hover { background: #ebebeb !important; }
-    #mt-app .mt-btn:disabled { opacity: 0.35 !important; cursor: default !important; }
-    @media (prefers-color-scheme: dark) { #mt-app .mt-btn { background: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.22) !important; } }
     #mt-app .mt-abtn {
-      display: inline-flex !important; align-items: center !important; gap: 8px !important;
-      min-height: 34px !important; padding: 0 14px !important; border-radius: 8px !important;
-      border: 1px solid rgba(0,0,0,0.18) !important; background: #ebebea !important;
-      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
-      cursor: pointer !important; margin-top: 10px !important;
+      display: inline-flex !important; align-items: center !important; gap: 7px !important;
+      min-height: 32px !important; padding: 0 12px !important; border-radius: 7px !important;
+      border: 1px solid rgba(0,0,0,0.16) !important; background: #ebebea !important;
+      color: #1a1a18 !important; font-size: 12px !important; font-family: inherit !important;
+      cursor: pointer !important; margin-top: 8px !important;
     }
     #mt-app .mt-abtn:hover { background: #ffffff !important; }
-    @media (prefers-color-scheme: dark) { #mt-app .mt-abtn { background: #2e2e2b !important; color: #f0efe8 !important; } }
-    #mt-app .mt-ast { display: block !important; font-size: 12px !important; color: #9a9a96 !important; margin-top: 4px !important; min-height: 16px !important; }
-    #mt-app .mt-nav { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; align-items: center !important; margin: 0 0 1rem !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-abtn { background: #2e2e2b !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.16) !important; } }
+    #mt-app .mt-ast { display: block !important; font-size: 11px !important; color: #9a9a96 !important; margin-top: 3px !important; min-height: 14px !important; }
 
-    #mt-app .mt-qcard { display: block !important; background: #ffffff !important; border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 12px !important; padding: 2rem !important; text-align: center !important; }
+    #mt-app .mt-empty { display: block !important; padding: 2.5rem 1rem !important; text-align: center !important; color: #9a9a96 !important; font-size: 14px !important; }
+
+    #mt-app .mt-qcard { display: block !important; background: #ffffff !important; border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 14px !important; padding: 2rem !important; text-align: center !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-qcard { background: #1c1c1a !important; border-color: rgba(255,255,255,0.10) !important; } }
-    #mt-app .mt-qq { display: block !important; font-size: 26px !important; font-weight: 600 !important; color: #1a1a18 !important; margin: 0 0 6px !important; }
+    #mt-app .mt-qq { display: block !important; font-size: 28px !important; font-weight: 700 !important; color: #1a1a18 !important; margin: 0 0 6px !important; letter-spacing: -0.3px !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-qq { color: #f0efe8 !important; } }
-    #mt-app .mt-qsub { display: block !important; font-size: 14px !important; color: #6b6b67 !important; margin: 0 0 1.75rem !important; }
-    #mt-app .mt-qopts { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; max-width: 480px !important; margin: 0 auto 1.5rem !important; }
+    #mt-app .mt-qsub { display: block !important; font-size: 13px !important; color: #6b6b67 !important; margin: 0 0 1.5rem !important; }
+    #mt-app .mt-qopts { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 9px !important; max-width: 440px !important; margin: 0 auto 1.25rem !important; }
     #mt-app .mt-qopt {
-      display: block !important; padding: 0.75rem 1rem !important; border-radius: 8px !important;
-      border: 1px solid rgba(0,0,0,0.22) !important; background: #ffffff !important;
-      color: #1a1a18 !important; font-size: 14px !important; font-family: inherit !important;
+      display: block !important; padding: 0.65rem 0.9rem !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.20) !important; background: #ffffff !important;
+      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
       cursor: pointer !important; text-align: left !important; line-height: 1.4 !important; width: 100% !important;
     }
     #mt-app .mt-qopt:hover { background: #f0efea !important; }
@@ -136,18 +131,25 @@
     #mt-app .mt-qopt.wrong   { background: #FCEBEB !important; border-color: #A32D2D !important; color: #501313 !important; }
     @media (prefers-color-scheme: dark) {
       #mt-app .mt-qopt { background: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.18) !important; }
+      #mt-app .mt-qopt:hover { background: #2e2e2b !important; }
       #mt-app .mt-qopt.correct { background: #173404 !important; border-color: #639922 !important; color: #C0DD97 !important; }
       #mt-app .mt-qopt.wrong   { background: #501313 !important; border-color: #A32D2D !important; color: #F7C1C1 !important; }
     }
-    #mt-app .mt-qscr { display: block !important; font-size: 14px !important; color: #6b6b67 !important; margin-top: 1rem !important; text-align: center !important; }
-    #mt-app .mt-qres { display: block !important; font-size: 42px !important; font-weight: 700 !important; color: #1a1a18 !important; margin: 0 0 0.75rem !important; }
+    #mt-app .mt-qscr { display: block !important; font-size: 13px !important; color: #6b6b67 !important; margin-top: 0.85rem !important; text-align: center !important; }
+    #mt-app .mt-qres { display: block !important; font-size: 44px !important; font-weight: 700 !important; color: #1a1a18 !important; margin: 0 0 0.5rem !important; }
     @media (prefers-color-scheme: dark) { #mt-app .mt-qres { color: #f0efe8 !important; } }
-    #mt-app .mt-pb { display: block !important; height: 4px !important; background: rgba(0,0,0,0.10) !important; border-radius: 2px !important; margin: 0 0 1.25rem !important; overflow: hidden !important; }
+    #mt-app .mt-pb { display: block !important; height: 4px !important; background: rgba(0,0,0,0.10) !important; border-radius: 2px !important; margin: 0 0 1.1rem !important; overflow: hidden !important; }
     #mt-app .mt-pf { display: block !important; height: 100% !important; background: #185FA5 !important; border-radius: 2px !important; transition: width 0.3s !important; }
-    #mt-app .mt-empty { display: block !important; padding: 3rem 1rem !important; text-align: center !important; color: #9a9a96 !important; font-size: 14px !important; }
-
-    @media (max-width: 500px) { #mt-app .mt-qopts { grid-template-columns: 1fr !important; } #mt-app .mt-grid { grid-template-columns: 1fr 1fr !important; } }
-    @media (max-width: 360px) { #mt-app .mt-grid { grid-template-columns: 1fr !important; } }
+    #mt-app .mt-btn {
+      display: inline-flex !important; align-items: center !important;
+      min-height: 36px !important; padding: 6px 16px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.20) !important; background: #ffffff !important;
+      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
+      cursor: pointer !important; white-space: nowrap !important;
+    }
+    #mt-app .mt-btn:hover { background: #ebebeb !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-btn { background: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.20) !important; } }
+    @media (max-width: 480px) { #mt-app .mt-qopts { grid-template-columns: 1fr !important; } }
   </style>
 </head>
 <body style="margin:0;padding:0;">
@@ -194,9 +196,12 @@
   </div>
 
   <div id="mt-b">
-    <span class="mt-count" id="mt-count"></span>
-    <div id="mt-dp" style="display:none" class="mt-dp"></div>
-    <div id="mt-grid" class="mt-grid"></div>
+    <div class="mt-nav-row">
+      <button class="mt-arrow-btn" id="mt-prev" onclick="mtStep(-1)">&#8592;</button>
+      <span class="mt-nav-count" id="mt-count">— of —</span>
+      <button class="mt-arrow-btn" id="mt-next" onclick="mtStep(1)">&#8594;</button>
+    </div>
+    <div id="mt-card-area"></div>
   </div>
 
   <div id="mt-q" style="display:none">
@@ -318,7 +323,7 @@ const MT=[
   {term:"presser",lang:"French",meaning:"hurry, press forward",phonetic:"preh-say",category:"tempo",grade:8,definition:"Press forward — gradually quicken the tempo.",example:"Saint-Saens uses presser un peu for passages building towards an exciting climax."},
 ];
 
-let mF=[],mSI=null,mM='b',mU=null,mQ={terms:[],idx:0,score:0,answered:false};
+let mF=[],mIdx=0,mM='b',mU=null,mQ={terms:[],idx:0,score:0,answered:false};
 const mT='speechSynthesis' in window;
 function mLB(l){return l==='Italian'?'mt-it':l==='German'?'mt-de':'mt-fr';}
 
@@ -327,11 +332,8 @@ function mtApply(){
   const l=document.getElementById('mt-lang').value;
   const c=document.getElementById('mt-cat').value;
   mF=MT.filter(t=>t.grade<=g&&(l==='all'||t.lang===l)&&(c==='all'||t.category===c));
-  mSI=null;
-  document.getElementById('mt-dp').style.display='none';
-  mRG();
-  const lb=g===1?'Grade 1':'Grades 1\u20138';
-  document.getElementById('mt-count').textContent=mF.length+' term'+(mF.length!==1?'s':'')+' ('+lb+')';
+  mIdx=0;
+  mRenderCard();
 }
 
 function mtMode(m){
@@ -343,10 +345,9 @@ function mtMode(m){
   if(m==='q')mIQ();
 }
 
-function mRG(){
-  const g=document.getElementById('mt-grid');
-  if(!mF.length){g.innerHTML='<div class="mt-empty">No terms match these filters.</div>';return;}
-  g.innerHTML=mF.map((t,i)=>`<div class="mt-card${mSI===i?' sel':''}" onclick="mSD(${i})"><span class="mt-lb ${mLB(t.lang)}">${t.lang}</span><div class="mt-cg">Grade ${t.grade}</div><div class="mt-ct">${t.term}</div><div class="mt-cm">${t.meaning}</div><div class="mt-cc">${t.category}</div></div>`).join('');
+function mtStep(dir){
+  mIdx=Math.max(0,Math.min(mF.length-1,mIdx+dir));
+  mRenderCard();
 }
 
 function mSp(text,sid){
@@ -363,21 +364,42 @@ function mSp(text,sid){
 
 function mE(s){return(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
 
-function mSD(i){
-  mSI=i; mRG();
-  const t=mF[i];
-  const panel=document.getElementById('mt-dp');
-  panel.style.display='block';
-  const pB=mT?`<button class="mt-abtn" onclick="mSp('${mE(t.term)}','mt-st')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Hear pronunciation</button><div class="mt-ast" id="mt-st"></div>`:'';
-  const eB=mT?`<button class="mt-abtn" onclick="mSp('${mE(t.example)}','mt-se')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Read aloud</button><div class="mt-ast" id="mt-se"></div>`:'';
-  panel.innerHTML=`<div class="mt-nav"><button class="mt-btn" onclick="mSD(${Math.max(0,i-1)})" ${i===0?'disabled':''}>&#8592; Prev</button><button class="mt-btn" onclick="mSD(${Math.min(mF.length-1,i+1)})" ${i===mF.length-1?'disabled':''}>Next &#8594;</button><span style="font-size:13px;color:#6b6b67;margin-left:8px">${i+1} of ${mF.length}</span><button class="mt-btn" style="margin-left:auto" onclick="mCD()">Close &#x2715;</button></div><div class="mt-dm"><span class="mt-lb ${mLB(t.lang)}">${t.lang}</span><span class="mt-chip">${t.category}</span><span class="mt-chip">Grade ${t.grade}</span></div><span class="mt-dp-h2">${t.term}</span><span class="mt-ph">/${t.phonetic}/</span>${pB}<span class="mt-ml">${t.meaning}</span><div class="mt-sec"><span class="mt-sec-h">Definition</span><span class="mt-sec-p">${t.definition}</span></div><div class="mt-sec"><span class="mt-sec-h">Musical example</span><div class="mt-ex">${t.example}</div>${eB}</div>`;
-  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-
-function mCD(){
+function mRenderCard(){
   if(mU){speechSynthesis.cancel();mU=null;}
-  document.getElementById('mt-dp').style.display='none';
-  mSI=null; mRG();
+  const area=document.getElementById('mt-card-area');
+  const countEl=document.getElementById('mt-count');
+  const prevBtn=document.getElementById('mt-prev');
+  const nextBtn=document.getElementById('mt-next');
+
+  if(!mF.length){
+    area.innerHTML='<div class="mt-empty">No terms match these filters.</div>';
+    countEl.textContent='0 terms';
+    prevBtn.disabled=true; nextBtn.disabled=true;
+    return;
+  }
+
+  prevBtn.disabled=(mIdx===0);
+  nextBtn.disabled=(mIdx===mF.length-1);
+  countEl.textContent=(mIdx+1)+' of '+mF.length;
+
+  const t=mF[mIdx];
+  const pB=mT?`<button class="mt-abtn" onclick="mSp('${mE(t.term)}','mt-st')"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Hear pronunciation</button><div class="mt-ast" id="mt-st"></div>`:'';
+  const eB=mT?`<button class="mt-abtn" onclick="mSp('${mE(t.example)}','mt-se')"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Read aloud</button><div class="mt-ast" id="mt-se"></div>`:'';
+
+  area.innerHTML=`<div class="mt-card">
+    <div class="mt-card-top">
+      <span class="mt-lb ${mLB(t.lang)}">${t.lang}</span>
+      <span class="mt-chip">${t.category}</span>
+      <span class="mt-chip">Grade ${t.grade}</span>
+    </div>
+    <span class="mt-term">${t.term}</span>
+    <span class="mt-ph">/${t.phonetic}/</span>
+    ${pB}
+    <span class="mt-meaning">${t.meaning}</span>
+    <div class="mt-divider"></div>
+    <div class="mt-sec"><span class="mt-sec-h">Definition</span><span class="mt-sec-p">${t.definition}</span></div>
+    <div class="mt-sec"><span class="mt-sec-h">Musical example</span><div class="mt-ex">${t.example}</div>${eB}</div>
+  </div>`;
 }
 
 function mIQ(){
@@ -393,7 +415,7 @@ function mSQ(){
   const{terms,idx,score}=mQ;
   if(idx>=terms.length){
     const p=score/terms.length;
-    document.getElementById('mt-qcard').innerHTML=`<div class="mt-qres">${score}/${terms.length}</div><p style="font-size:16px;color:#6b6b67;margin:0 0 1.5rem">${p===1?'Perfect score!':p>=0.7?'Well done!':'Keep practising!'}</p><button class="mt-btn" onclick="mIQ()">Try again &#8635;</button>`;
+    document.getElementById('mt-qcard').innerHTML=`<div class="mt-qres">${score}/${terms.length}</div><p style="font-size:15px;color:#6b6b67;margin:0 0 1.25rem">${p===1?'Perfect score!':p>=0.7?'Well done!':'Keep practising!'}</p><button class="mt-btn" onclick="mIQ()">Try again &#8635;</button>`;
     document.getElementById('mt-qscr').textContent='';
     document.getElementById('mt-pf').style.width='100%';
     return;
@@ -405,9 +427,9 @@ function mSQ(){
   const ans=md==='t2m'?t.meaning:t.term;
   const ot=mF.filter(x=>x!==t).sort(()=>Math.random()-0.5).slice(0,3);
   const opts=[...ot.map(o=>md==='t2m'?o.meaning:o.term),ans].sort(()=>Math.random()-0.5);
-  const tB=mT&&md==='t2m'?`<button class="mt-abtn" style="margin:0 auto 1rem;display:inline-flex" onclick="mSp('${mE(t.term)}','mt-qs')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Hear term</button><div class="mt-ast" id="mt-qs" style="margin-bottom:0.5rem"></div>`:'';
+  const tB=mT&&md==='t2m'?`<button class="mt-abtn" style="margin:0 auto 1rem;display:inline-flex" onclick="mSp('${mE(t.term)}','mt-qs')"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Hear term</button><div class="mt-ast" id="mt-qs" style="margin-bottom:0.5rem"></div>`:'';
   document.getElementById('mt-qcard').innerHTML=`<p style="font-size:12px;color:#6b6b67;margin:0 0 0.5rem">${md==='t2m'?'What does this term mean?':'Which term matches this meaning?'}</p><div class="mt-qq">${q}</div><div class="mt-qsub"><span class="mt-lb ${mLB(t.lang)}">${t.lang}</span>&nbsp; Grade ${t.grade}</div>${tB}<div class="mt-qopts">${opts.map(o=>`<button class="mt-qopt" onclick="mAQ(this,'${encodeURIComponent(o)}','${encodeURIComponent(ans)}')">${o}</button>`).join('')}</div>`;
-  document.getElementById('mt-qscr').textContent=`Question ${idx+1} of ${terms.length} \u00b7 Score: ${score}`;
+  document.getElementById('mt-qscr').textContent='Question '+(idx+1)+' of '+terms.length+' \u00b7 Score: '+score;
   mQ.answered=false;
 }
 
