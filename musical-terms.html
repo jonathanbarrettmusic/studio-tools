@@ -210,7 +210,7 @@
       <div class="mt-qcard" id="mt-qcard"></div>
       <div class="mt-qscr" id="mt-qscr"></div>
     </div>
-    <div id="mt-qe" class="mt-empty" style="display:none">Not enough terms — try a higher grade or broader filter.</div>
+
   </div>
 
 </div>
@@ -403,8 +403,8 @@ function mRenderCard(){
 }
 
 function mIQ(){
-  if(mF.length<4){document.getElementById('mt-qe').style.display='block';document.getElementById('mt-qc').style.display='none';return;}
-  document.getElementById('mt-qe').style.display='none';
+  if(mF.length<4){return;}
+  document.getElementById('mt-qe') && (document.getElementById('mt-qe').style.display='none');
   if(mU){speechSynthesis.cancel();mU=null;}
   const s=[...mF].sort(()=>Math.random()-0.5);
   mQ={terms:s.slice(0,Math.min(12,s.length)),idx:0,score:0,answered:false};
