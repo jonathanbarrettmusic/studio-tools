@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musical Terms | Grades 1-8</title>
+  <style>
+    #mt-app, #mt-app * { box-sizing: border-box !important; }
+    #mt-app {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      font-size: 15px !important; line-height: 1.6 !important;
+      color: #1a1a18 !important; background: #f0efea !important;
+      padding: 1.5rem !important; max-width: 780px !important; margin: 0 auto !important;
+    }
+    @media (prefers-color-scheme: dark) { #mt-app { color: #f0efe8 !important; background: #252523 !important; } }
+
+    #mt-app .mt-hd { display: block !important; width: 100% !important; margin: 0 0 1.25rem !important; padding: 0 !important; }
+    #mt-app .mt-hd-title { display: block !important; font-size: 22px !important; font-weight: 600 !important; line-height: 1.3 !important; margin: 0 0 4px !important; padding: 0 !important; color: #1a1a18 !important; }
+    #mt-app .mt-hd-sub { display: block !important; font-size: 14px !important; color: #6b6b67 !important; margin: 0 !important; padding: 0 !important; line-height: 1.5 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-hd-title { color: #f0efe8 !important; } }
+
+    #mt-app .mt-ctrl { display: block !important; width: 100% !important; margin: 0 0 1.25rem !important; padding: 0 !important; }
+    #mt-app .mt-ctrl-row { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 10px !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+    #mt-app .mt-sel {
+      display: inline-block !important; min-height: 44px !important; min-width: 140px !important;
+      padding: 8px 34px 8px 14px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.25) !important; background-color: #ffffff !important;
+      color: #1a1a18 !important; font-size: 14px !important; font-family: inherit !important;
+      cursor: pointer !important; line-height: 1.5 !important;
+      -webkit-appearance: none !important; appearance: none !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b67' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important; background-position: right 12px center !important;
+      flex-shrink: 0 !important;
+    }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-sel { background-color: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.22) !important; } }
+
+    #mt-app .mt-tabs { display: flex !important; flex-direction: row !important; gap: 8px !important; margin: 0 0 1.25rem !important; padding: 0 !important; }
+    #mt-app .mt-tab {
+      display: inline-flex !important; align-items: center !important; justify-content: center !important;
+      height: 38px !important; padding: 0 20px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.12) !important; background: transparent !important;
+      color: #6b6b67 !important; font-size: 13px !important; font-family: inherit !important;
+      cursor: pointer !important; text-decoration: none !important;
+    }
+    #mt-app .mt-tab:hover { background: #e6e5e1 !important; }
+    #mt-app .mt-tab.active { background: #e6e5e1 !important; color: #1a1a18 !important; border-color: rgba(0,0,0,0.25) !important; }
+    @media (prefers-color-scheme: dark) {
+      #mt-app .mt-tab { color: #9a9a96 !important; border-color: rgba(255,255,255,0.10) !important; }
+      #mt-app .mt-tab.active { background: #2e2e2b !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.22) !important; }
+    }
+
+    #mt-app .mt-count { display: block !important; font-size: 12px !important; color: #9a9a96 !important; margin: 0 0 1rem !important; }
+
+    #mt-app .mt-grid { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)) !important; gap: 12px !important; }
+    #mt-app .mt-card {
+      display: block !important; background: #ffffff !important;
+      border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 12px !important;
+      padding: 1rem !important; cursor: pointer !important;
+    }
+    #mt-app .mt-card:hover { border-color: rgba(0,0,0,0.28) !important; }
+    #mt-app .mt-card.sel { border: 2px solid #185FA5 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-card { background: #1c1c1a !important; border-color: rgba(255,255,255,0.10) !important; } }
+
+    #mt-app .mt-lb { display: inline-block !important; font-size: 11px !important; font-weight: 600 !important; padding: 2px 8px !important; border-radius: 6px !important; margin: 0 0 8px !important; line-height: 1.5 !important; }
+    #mt-app .mt-it { background: #EEEDFE !important; color: #3C3489 !important; }
+    #mt-app .mt-de { background: #FAEEDA !important; color: #633806 !important; }
+    #mt-app .mt-fr { background: #E1F5EE !important; color: #085041 !important; }
+    @media (prefers-color-scheme: dark) {
+      #mt-app .mt-it { background: #26215C !important; color: #CECBF6 !important; }
+      #mt-app .mt-de { background: #412402 !important; color: #FAC775 !important; }
+      #mt-app .mt-fr { background: #04342C !important; color: #9FE1CB !important; }
+    }
+    #mt-app .mt-cg { display: block !important; font-size: 11px !important; color: #9a9a96 !important; margin: 0 0 4px !important; }
+    #mt-app .mt-ct { display: block !important; font-size: 15px !important; font-weight: 600 !important; color: #1a1a18 !important; margin: 0 0 3px !important; }
+    #mt-app .mt-cm { display: block !important; font-size: 12px !important; color: #6b6b67 !important; line-height: 1.5 !important; margin: 0 !important; }
+    #mt-app .mt-cc { display: block !important; font-size: 11px !important; color: #9a9a96 !important; margin: 6px 0 0 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-ct { color: #f0efe8 !important; } }
+
+    #mt-app .mt-dp {
+      display: block !important; background: #ffffff !important;
+      border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 12px !important;
+      padding: 1.5rem !important; margin: 0 0 1.5rem !important;
+    }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-dp { background: #1c1c1a !important; border-color: rgba(255,255,255,0.10) !important; } }
+    #mt-app .mt-dm { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; align-items: center !important; margin: 0 0 1rem !important; }
+    #mt-app .mt-chip { display: inline-block !important; font-size: 11px !important; font-weight: 500 !important; padding: 3px 10px !important; border-radius: 6px !important; line-height: 1.5 !important; background: #e6e5e1 !important; color: #6b6b67 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-chip { background: #2e2e2b !important; color: #9a9a96 !important; } }
+    #mt-app .mt-dp-h2 { display: block !important; font-size: 24px !important; font-weight: 600 !important; color: #1a1a18 !important; margin: 0 0 4px !important; padding: 0 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-dp-h2 { color: #f0efe8 !important; } }
+    #mt-app .mt-ph { display: block !important; font-size: 15px !important; font-style: italic !important; color: #6b6b67 !important; margin: 0 0 6px !important; }
+    #mt-app .mt-ml { display: block !important; font-size: 16px !important; color: #6b6b67 !important; margin: 6px 0 0 !important; }
+    #mt-app .mt-sec { display: block !important; margin: 1rem 0 0 !important; padding: 1rem 0 0 !important; border-top: 1px solid rgba(0,0,0,0.10) !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-sec { border-top-color: rgba(255,255,255,0.08) !important; } }
+    #mt-app .mt-sec-h { display: block !important; font-size: 11px !important; font-weight: 600 !important; color: #9a9a96 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; margin: 0 0 6px !important; padding: 0 !important; }
+    #mt-app .mt-sec-p { display: block !important; font-size: 14px !important; line-height: 1.7 !important; color: #1a1a18 !important; margin: 0 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-sec-p { color: #f0efe8 !important; } }
+    #mt-app .mt-ex { display: block !important; background: #ebebea !important; border-radius: 8px !important; padding: 0.75rem 1rem !important; font-size: 13px !important; line-height: 1.6 !important; color: #6b6b67 !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-ex { background: #252523 !important; } }
+
+    #mt-app .mt-btn {
+      display: inline-flex !important; align-items: center !important;
+      min-height: 38px !important; padding: 6px 16px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.22) !important; background: #ffffff !important;
+      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
+      cursor: pointer !important; white-space: nowrap !important; text-decoration: none !important;
+    }
+    #mt-app .mt-btn:hover { background: #ebebeb !important; }
+    #mt-app .mt-btn:disabled { opacity: 0.35 !important; cursor: default !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-btn { background: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.22) !important; } }
+    #mt-app .mt-abtn {
+      display: inline-flex !important; align-items: center !important; gap: 8px !important;
+      min-height: 34px !important; padding: 0 14px !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.18) !important; background: #ebebea !important;
+      color: #1a1a18 !important; font-size: 13px !important; font-family: inherit !important;
+      cursor: pointer !important; margin-top: 10px !important;
+    }
+    #mt-app .mt-abtn:hover { background: #ffffff !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-abtn { background: #2e2e2b !important; color: #f0efe8 !important; } }
+    #mt-app .mt-ast { display: block !important; font-size: 12px !important; color: #9a9a96 !important; margin-top: 4px !important; min-height: 16px !important; }
+    #mt-app .mt-nav { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; align-items: center !important; margin: 0 0 1rem !important; }
+
+    #mt-app .mt-qcard { display: block !important; background: #ffffff !important; border: 1px solid rgba(0,0,0,0.12) !important; border-radius: 12px !important; padding: 2rem !important; text-align: center !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-qcard { background: #1c1c1a !important; border-color: rgba(255,255,255,0.10) !important; } }
+    #mt-app .mt-qq { display: block !important; font-size: 26px !important; font-weight: 600 !important; color: #1a1a18 !important; margin: 0 0 6px !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-qq { color: #f0efe8 !important; } }
+    #mt-app .mt-qsub { display: block !important; font-size: 14px !important; color: #6b6b67 !important; margin: 0 0 1.75rem !important; }
+    #mt-app .mt-qopts { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; max-width: 480px !important; margin: 0 auto 1.5rem !important; }
+    #mt-app .mt-qopt {
+      display: block !important; padding: 0.75rem 1rem !important; border-radius: 8px !important;
+      border: 1px solid rgba(0,0,0,0.22) !important; background: #ffffff !important;
+      color: #1a1a18 !important; font-size: 14px !important; font-family: inherit !important;
+      cursor: pointer !important; text-align: left !important; line-height: 1.4 !important; width: 100% !important;
+    }
+    #mt-app .mt-qopt:hover { background: #f0efea !important; }
+    #mt-app .mt-qopt.correct { background: #EAF3DE !important; border-color: #639922 !important; color: #27500A !important; }
+    #mt-app .mt-qopt.wrong   { background: #FCEBEB !important; border-color: #A32D2D !important; color: #501313 !important; }
+    @media (prefers-color-scheme: dark) {
+      #mt-app .mt-qopt { background: #1c1c1a !important; color: #f0efe8 !important; border-color: rgba(255,255,255,0.18) !important; }
+      #mt-app .mt-qopt.correct { background: #173404 !important; border-color: #639922 !important; color: #C0DD97 !important; }
+      #mt-app .mt-qopt.wrong   { background: #501313 !important; border-color: #A32D2D !important; color: #F7C1C1 !important; }
+    }
+    #mt-app .mt-qscr { display: block !important; font-size: 14px !important; color: #6b6b67 !important; margin-top: 1rem !important; text-align: center !important; }
+    #mt-app .mt-qres { display: block !important; font-size: 42px !important; font-weight: 700 !important; color: #1a1a18 !important; margin: 0 0 0.75rem !important; }
+    @media (prefers-color-scheme: dark) { #mt-app .mt-qres { color: #f0efe8 !important; } }
+    #mt-app .mt-pb { display: block !important; height: 4px !important; background: rgba(0,0,0,0.10) !important; border-radius: 2px !important; margin: 0 0 1.25rem !important; overflow: hidden !important; }
+    #mt-app .mt-pf { display: block !important; height: 100% !important; background: #185FA5 !important; border-radius: 2px !important; transition: width 0.3s !important; }
+    #mt-app .mt-empty { display: block !important; padding: 3rem 1rem !important; text-align: center !important; color: #9a9a96 !important; font-size: 14px !important; }
+
+    @media (max-width: 500px) { #mt-app .mt-qopts { grid-template-columns: 1fr !important; } #mt-app .mt-grid { grid-template-columns: 1fr 1fr !important; } }
+    @media (max-width: 360px) { #mt-app .mt-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</head>
+<body style="margin:0;padding:0;">
+<div id="mt-app">
+
+  <div class="mt-hd">
+    <span class="mt-hd-title">Musical terms</span>
+    <span class="mt-hd-sub">Study Italian, German, and French terms by grade</span>
+  </div>
+
+  <div class="mt-ctrl">
+    <div class="mt-ctrl-row">
+      <select class="mt-sel" id="mt-grade" onchange="mtApply()">
+        <option value="1">Grade 1</option>
+        <option value="2">Grade 2</option>
+        <option value="3">Grade 3</option>
+        <option value="4">Grade 4</option>
+        <option value="5">Grade 5</option>
+        <option value="6">Grade 6</option>
+        <option value="7">Grade 7</option>
+        <option value="8">Grade 8</option>
+      </select>
+      <select class="mt-sel" id="mt-lang" onchange="mtApply()">
+        <option value="all">All languages</option>
+        <option value="Italian">Italian</option>
+        <option value="German">German</option>
+        <option value="French">French</option>
+      </select>
+      <select class="mt-sel" id="mt-cat" onchange="mtApply()">
+        <option value="all">All categories</option>
+        <option value="dynamics">Dynamics</option>
+        <option value="tempo">Tempo</option>
+        <option value="articulation">Articulation</option>
+        <option value="expression">Expression</option>
+        <option value="style">Style</option>
+        <option value="form">Form</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-tabs">
+    <button class="mt-tab active" id="mt-tab-b" onclick="mtMode('b')">Browse</button>
+    <button class="mt-tab" id="mt-tab-q" onclick="mtMode('q')">Quiz</button>
+  </div>
+
+  <div id="mt-b">
+    <span class="mt-count" id="mt-count"></span>
+    <div id="mt-dp" style="display:none" class="mt-dp"></div>
+    <div id="mt-grid" class="mt-grid"></div>
+  </div>
+
+  <div id="mt-q" style="display:none">
+    <div id="mt-qc" style="display:none">
+      <div class="mt-pb"><div class="mt-pf" id="mt-pf"></div></div>
+      <div class="mt-qcard" id="mt-qcard"></div>
+      <div class="mt-qscr" id="mt-qscr"></div>
+    </div>
+    <div id="mt-qe" class="mt-empty">Not enough terms — try a higher grade or broader filter.</div>
+  </div>
+
+</div>
+<script>
+const MT=[
+  {term:"piano",lang:"Italian",meaning:"soft",phonetic:"pee-ah-no",category:"dynamics",grade:1,definition:"Play softly and quietly.",example:"The opening of Beethoven's Fur Elise is marked piano throughout."},
+  {term:"forte",lang:"Italian",meaning:"loud",phonetic:"for-teh",category:"dynamics",grade:1,definition:"Play loudly.",example:"The famous opening of Beethoven's Symphony No. 5 bursts in forte."},
+  {term:"mezzo piano",lang:"Italian",meaning:"moderately soft",phonetic:"met-so pee-ah-no",category:"dynamics",grade:1,definition:"Play moderately softly — louder than piano but softer than mezzo forte.",example:"Many lyrical melodies are marked mezzo piano for a gentle, warm tone."},
+  {term:"mezzo forte",lang:"Italian",meaning:"moderately loud",phonetic:"met-so for-teh",category:"dynamics",grade:1,definition:"Play moderately loudly — the most common dynamic in everyday music.",example:"The main theme of Mozart's Eine kleine Nachtmusik enters at mezzo forte."},
+  {term:"crescendo",lang:"Italian",meaning:"gradually getting louder",phonetic:"kreh-shen-do",category:"dynamics",grade:1,definition:"Gradually increase the volume of sound.",example:"Ravel's Bolero is built on one enormous crescendo from start to finish."},
+  {term:"diminuendo",lang:"Italian",meaning:"gradually getting softer",phonetic:"dih-min-yoo-en-do",category:"dynamics",grade:1,definition:"Gradually decrease the volume of sound.",example:"The final bars of Schubert's Ave Maria fade away in a long diminuendo."},
+  {term:"allegro",lang:"Italian",meaning:"fast, lively",phonetic:"ah-leh-gro",category:"tempo",grade:1,definition:"A fast, lively tempo — one of the most common tempo markings.",example:"The first movement of Mozart's Symphony No. 40 is marked Allegro molto."},
+  {term:"andante",lang:"Italian",meaning:"walking pace",phonetic:"an-dan-teh",category:"tempo",grade:1,definition:"A moderate, walking tempo — unhurried and flowing.",example:"The second movement of Beethoven's Symphony No. 5 is Andante con moto."},
+  {term:"moderato",lang:"Italian",meaning:"at a moderate speed",phonetic:"mod-er-ah-to",category:"tempo",grade:1,definition:"A tempo midway between slow and fast.",example:"Many sonatinas for beginners are marked Moderato to keep a steady pace."},
+  {term:"legato",lang:"Italian",meaning:"smoothly",phonetic:"leh-gah-to",category:"articulation",grade:1,definition:"Play notes smoothly and connectedly, with no gaps between them.",example:"Chopin's nocturnes are famous for their long, legato melodic lines."},
+  {term:"staccato",lang:"Italian",meaning:"detached",phonetic:"stah-kah-to",category:"articulation",grade:1,definition:"Play notes short and detached, each note separated from the next.",example:"The playful theme in Haydn's Surprise Symphony uses staccato strings."},
+  {term:"ritardando",lang:"Italian",meaning:"gradually slowing down",phonetic:"ree-tar-dan-do",category:"tempo",grade:1,definition:"Gradually slow down the tempo.",example:"Most pieces slow down with a ritardando in the final few bars."},
+  {term:"pianissimo",lang:"Italian",meaning:"very soft",phonetic:"pee-ah-nis-ee-mo",category:"dynamics",grade:2,definition:"Play very softly — quieter than piano.",example:"The mysterious opening of Beethoven's Symphony No. 9 finale is marked pianissimo."},
+  {term:"fortissimo",lang:"Italian",meaning:"very loud",phonetic:"for-tis-ee-mo",category:"dynamics",grade:2,definition:"Play very loudly — louder than forte.",example:"The climax of Tchaikovsky's 1812 Overture reaches fortissimo with cannons and bells."},
+  {term:"accelerando",lang:"Italian",meaning:"gradually speeding up",phonetic:"ah-chel-er-an-do",category:"tempo",grade:2,definition:"Gradually increase the tempo.",example:"The coda of Rossini's William Tell Overture rushes forward with an accelerando."},
+  {term:"adagio",lang:"Italian",meaning:"slow and stately",phonetic:"ah-dah-jee-oh",category:"tempo",grade:2,definition:"A slow, calm tempo — slower than andante.",example:"Barber's Adagio for Strings is one of the most famous slow movements ever written."},
+  {term:"vivace",lang:"Italian",meaning:"lively and fast",phonetic:"vee-vah-cheh",category:"tempo",grade:2,definition:"Very lively and quick — faster than allegro.",example:"The final movement of Mendelssohn's Violin Concerto is marked Allegro molto vivace."},
+  {term:"a tempo",lang:"Italian",meaning:"return to original speed",phonetic:"ah tem-po",category:"tempo",grade:2,definition:"Return to the original tempo after a deviation such as a ritardando.",example:"After a ritardando, composers often mark a tempo to resume the original speed."},
+  {term:"fine",lang:"Italian",meaning:"the end",phonetic:"fee-neh",category:"form",grade:2,definition:"Marks the end of the piece, often used with Da Capo.",example:"In a Da Capo aria, the singer returns to the beginning and ends at the Fine marking."},
+  {term:"da capo",lang:"Italian",meaning:"from the beginning",phonetic:"dah kah-po",category:"form",grade:2,definition:"Return to the beginning of the piece and play again.",example:"Minuet and trio form ends with D.C. al Fine — return to the start and end at Fine."},
+  {term:"sforzando",lang:"Italian",meaning:"sudden strong accent",phonetic:"sfor-tsan-do",category:"dynamics",grade:2,definition:"A sudden, strong accent on a single note or chord.",example:"Beethoven loved using sforzando accents on unexpected beats to create surprise."},
+  {term:"cantabile",lang:"Italian",meaning:"in a singing style",phonetic:"kan-tah-bee-leh",category:"expression",grade:2,definition:"Play in a smooth, lyrical, singing manner.",example:"The slow movement of Beethoven's Pathetique Sonata is marked Adagio cantabile."},
+  {term:"anime",lang:"French",meaning:"animated, lively",phonetic:"ah-nee-may",category:"tempo",grade:2,definition:"Lively and animated — the French equivalent of animato.",example:"Debussy and Ravel often use anime for sections requiring a light, quick touch."},
+  {term:"doux",lang:"French",meaning:"soft, gentle",phonetic:"doo",category:"dynamics",grade:2,definition:"Soft and gentle — the French equivalent of piano or dolce.",example:"Debussy uses doux in his Preludes for a veiled, hushed sound."},
+  {term:"largo",lang:"Italian",meaning:"very slow and broad",phonetic:"lar-go",category:"tempo",grade:3,definition:"A very slow, broad tempo — one of the slowest markings.",example:"The famous melody from Dvorak's New World Symphony is from the Largo movement."},
+  {term:"presto",lang:"Italian",meaning:"very fast",phonetic:"pres-to",category:"tempo",grade:3,definition:"Very fast — faster than allegro and vivace.",example:"The finale of Beethoven's Moonlight Sonata is marked Presto agitato."},
+  {term:"con brio",lang:"Italian",meaning:"with vigour",phonetic:"kon bree-oh",category:"expression",grade:3,definition:"Play with energy, spirit, and brilliance.",example:"Beethoven's Symphony No. 1 opens Allegro con brio."},
+  {term:"dolce",lang:"Italian",meaning:"sweetly",phonetic:"dol-cheh",category:"expression",grade:3,definition:"Play in a sweet, gentle, tender manner.",example:"The second theme of many Classical sonatas is marked dolce to contrast with the first."},
+  {term:"espressivo",lang:"Italian",meaning:"with expression",phonetic:"es-pres-see-vo",category:"expression",grade:3,definition:"Play with feeling and musical sensitivity.",example:"Romantic violin solos are often marked espressivo for an emotional, singing tone."},
+  {term:"marcato",lang:"Italian",meaning:"marked, stressed",phonetic:"mar-kah-to",category:"articulation",grade:3,definition:"Each note played with a strong accent and emphasis.",example:"March themes are often played marcato to give a bold, decisive character."},
+  {term:"tenuto",lang:"Italian",meaning:"held",phonetic:"ten-oo-to",category:"articulation",grade:3,definition:"Hold the note for its full value, sometimes slightly longer with gentle emphasis.",example:"A tenuto line over notes indicates each should be given its full weight."},
+  {term:"subito",lang:"Italian",meaning:"suddenly",phonetic:"soo-bee-to",category:"dynamics",grade:3,definition:"A sudden change — most often subito piano (suddenly soft) or subito forte.",example:"Beethoven often wrote subito piano after a loud passage to create dramatic surprise."},
+  {term:"langsam",lang:"German",meaning:"slow",phonetic:"lang-zahm",category:"tempo",grade:3,definition:"A slow tempo, used by German composers in place of Italian terms.",example:"Mahler uses langsam in his symphonies to indicate a deeply slow, meditative pace."},
+  {term:"lebhaft",lang:"German",meaning:"lively",phonetic:"layp-haft",category:"tempo",grade:3,definition:"Lively and animated in character.",example:"Schumann's piano pieces often carry the marking lebhaft for energetic movements."},
+  {term:"mit",lang:"German",meaning:"with",phonetic:"mit",category:"expression",grade:3,definition:"A prefix used with other words, e.g. mit Ausdruck (with expression).",example:"Mit Dampfer means with mute — a common instruction in German orchestral scores."},
+  {term:"ohne",lang:"German",meaning:"without",phonetic:"oh-neh",category:"expression",grade:3,definition:"A prefix meaning without, e.g. ohne Dampfer (without mute).",example:"Ohne Pedal in a piano score means to play without using the sustain pedal."},
+  {term:"vif",lang:"French",meaning:"lively, quick",phonetic:"veef",category:"tempo",grade:3,definition:"Lively and quick — the French equivalent of vivace.",example:"Bizet uses vif in his L'Arlesienne Suites for bright, dancing movements."},
+  {term:"modere",lang:"French",meaning:"at a moderate speed",phonetic:"mo-day-ray",category:"tempo",grade:3,definition:"At a moderate, unhurried pace — the French equivalent of moderato.",example:"Faure marks many of his songs modere for a flowing, conversational pace."},
+  {term:"con moto",lang:"Italian",meaning:"with movement",phonetic:"kon moh-to",category:"tempo",grade:4,definition:"Play with movement and energy — slightly faster or more driven.",example:"Beethoven's Andante con moto has more forward motion than a plain Andante."},
+  {term:"grazioso",lang:"Italian",meaning:"gracefully",phonetic:"grat-see-oh-so",category:"expression",grade:4,definition:"Play in a graceful, elegant manner.",example:"Many minuets are marked grazioso to emphasise their elegant, dance-like character."},
+  {term:"maestoso",lang:"Italian",meaning:"majestic",phonetic:"my-es-toh-so",category:"expression",grade:4,definition:"Play in a majestic, grand, and stately manner.",example:"The finale of many overtures arrives at a grand maestoso for maximum splendour."},
+  {term:"piu",lang:"Italian",meaning:"more",phonetic:"pyoo",category:"expression",grade:4,definition:"More — used to modify other terms, e.g. piu forte (louder) or piu lento (slower).",example:"Piu allegro means play faster than the current allegro marking."},
+  {term:"meno",lang:"Italian",meaning:"less",phonetic:"meh-no",category:"expression",grade:4,definition:"Less — used to modify other terms, e.g. meno mosso (less movement, slower).",example:"Meno forte instructs the performer to reduce the volume slightly."},
+  {term:"lento",lang:"Italian",meaning:"slow",phonetic:"len-to",category:"tempo",grade:4,definition:"Slow — between andante and largo in speed.",example:"Chopin's Lento con gran espressione is a deeply expressive nocturne-like piece."},
+  {term:"dal segno",lang:"Italian",meaning:"from the sign",phonetic:"dal sen-yo",category:"form",grade:4,definition:"Return to the sign and repeat from that point.",example:"Jazz charts frequently use D.S. al Coda to create a compact repeat structure."},
+  {term:"schnell",lang:"German",meaning:"fast",phonetic:"shnel",category:"tempo",grade:4,definition:"Fast — the German equivalent of allegro or presto.",example:"Schumann marked some of his faster character pieces schnell or sehr schnell."},
+  {term:"ruhig",lang:"German",meaning:"calm, peaceful",phonetic:"roo-ig",category:"expression",grade:4,definition:"Calm and peaceful in character.",example:"Brahms uses ruhig in his Intermezzos to indicate a serene, unhurried quality."},
+  {term:"kraftig",lang:"German",meaning:"strong, robust",phonetic:"kref-tig",category:"expression",grade:4,definition:"Strong and vigorous in character.",example:"Beethoven's German-language markings sometimes include kraftig for powerful passages."},
+  {term:"lent",lang:"French",meaning:"slow",phonetic:"lon",category:"tempo",grade:4,definition:"Slow — the French equivalent of lento or adagio.",example:"Debussy marks the opening of La Cathedrale Engloutie lent for a solemn quality."},
+  {term:"vite",lang:"French",meaning:"fast",phonetic:"veet",category:"tempo",grade:4,definition:"Fast — the French equivalent of allegro or presto.",example:"Couperin uses vite in his harpsichord pieces for quick, nimble passages."},
+  {term:"avec",lang:"French",meaning:"with",phonetic:"ah-vek",category:"expression",grade:4,definition:"With — used in phrases such as avec expression or avec mouvement.",example:"Avec elan means with dash and spirit — found in French orchestral scores."},
+  {term:"sans",lang:"French",meaning:"without",phonetic:"son",category:"expression",grade:4,definition:"Without — used in phrases such as sans expression or sans rigueur.",example:"Sans ralentir means without slowing down — maintain the tempo to the end."},
+  {term:"agitato",lang:"Italian",meaning:"agitated",phonetic:"ah-jih-tah-to",category:"expression",grade:5,definition:"Play in an agitated, restless, and unsettled manner.",example:"Beethoven's Moonlight Sonata finale is marked Presto agitato — fast and agitated."},
+  {term:"animato",lang:"Italian",meaning:"animated",phonetic:"ah-nee-mah-to",category:"expression",grade:5,definition:"Play in a lively, animated, spirited manner.",example:"Allegro animato is a common marking for bright, energetic movements."},
+  {term:"brillante",lang:"Italian",meaning:"brilliant, sparkling",phonetic:"bril-lan-teh",category:"expression",grade:5,definition:"Play with brilliance and sparkle — often with a bright, virtuosic tone.",example:"Liszt's piano concertos have many passages marked brillante for dazzling effect."},
+  {term:"con fuoco",lang:"Italian",meaning:"with fire",phonetic:"kon fyoo-oh-ko",category:"expression",grade:5,definition:"Play with fiery energy and passion.",example:"The finale of many Romantic concertos is marked con fuoco for a blazing ending."},
+  {term:"giocoso",lang:"Italian",meaning:"playful, humorous",phonetic:"joh-koh-so",category:"expression",grade:5,definition:"Play in a playful, jolly, humorous manner.",example:"Allegro giocoso is often used in lighter, scherzo-like movements."},
+  {term:"grave",lang:"Italian",meaning:"very slow and solemn",phonetic:"grah-veh",category:"tempo",grade:5,definition:"Very slow and solemn — the slowest Italian tempo marking.",example:"The introduction to many Baroque overtures is marked Grave for solemnity."},
+  {term:"tranquillo",lang:"Italian",meaning:"calm, tranquil",phonetic:"tran-kwil-oh",category:"expression",grade:5,definition:"Play in a calm, peaceful, tranquil manner.",example:"Middle sections of nocturnes are often marked tranquillo for contrast."},
+  {term:"mosso",lang:"Italian",meaning:"with motion",phonetic:"mos-so",category:"tempo",grade:5,definition:"With motion — used as piu mosso (more motion) or meno mosso (less motion).",example:"Piu mosso tells the performer to pick up the pace slightly from the current tempo."},
+  {term:"bewegt",lang:"German",meaning:"agitated, with movement",phonetic:"beh-vaykt",category:"expression",grade:5,definition:"With movement or agitation — similar to mosso or agitato.",example:"Mahler writes bewegt in his symphonies for passages of emotional turbulence."},
+  {term:"fliessend",lang:"German",meaning:"flowing",phonetic:"flee-send",category:"expression",grade:5,definition:"Flowing smoothly and continuously.",example:"Schubert uses fliessend for his song accompaniments to suggest rippling water."},
+  {term:"zart",lang:"German",meaning:"tender, delicate",phonetic:"tsart",category:"expression",grade:5,definition:"Tender and delicate in tone and touch.",example:"Schumann marks his more intimate piano miniatures zart for a gentle touch."},
+  {term:"expressif",lang:"French",meaning:"expressive",phonetic:"ex-press-eef",category:"expression",grade:5,definition:"Play with feeling and expression — the French equivalent of espressivo.",example:"Faure and Debussy use expressif for passages of heartfelt, singing melody."},
+  {term:"retenu",lang:"French",meaning:"held back",phonetic:"reh-teh-nyoo",category:"tempo",grade:5,definition:"Held back — a sudden or brief slowing down, more immediate than rallentando.",example:"Debussy uses retenu for expressive moments where time seems to briefly suspend."},
+  {term:"appassionato",lang:"Italian",meaning:"with passion",phonetic:"ah-pas-ee-oh-nah-to",category:"expression",grade:6,definition:"Play with intense passion and deep emotion.",example:"Beethoven's Piano Sonata Op. 57 is nicknamed Appassionata for its fiery passion."},
+  {term:"capriccioso",lang:"Italian",meaning:"capricious, whimsical",phonetic:"kah-pree-choh-so",category:"expression",grade:6,definition:"Play in a whimsical, capricious, unpredictable manner.",example:"Paganini's Caprices are named for their capricious, improvisatory character."},
+  {term:"deciso",lang:"Italian",meaning:"decisive, with determination",phonetic:"deh-chee-so",category:"expression",grade:6,definition:"Play in a bold, decisive, determined manner without hesitation.",example:"A march theme marked deciso should be played with strong, clear conviction."},
+  {term:"energico",lang:"Italian",meaning:"energetically",phonetic:"en-er-jee-ko",category:"expression",grade:6,definition:"Play with energy and force.",example:"Allegro energico is often used for driving, propulsive movements."},
+  {term:"grandioso",lang:"Italian",meaning:"grandly",phonetic:"gran-dee-oh-so",category:"expression",grade:6,definition:"Play in a grand, imposing, majestic manner.",example:"The climax of many Romantic tone poems is marked grandioso for maximum splendour."},
+  {term:"nobilmente",lang:"Italian",meaning:"nobly",phonetic:"no-bil-men-teh",category:"expression",grade:6,definition:"Play with nobility and dignity.",example:"Elgar frequently used nobilmente — a marking he almost invented for English music."},
+  {term:"pesante",lang:"Italian",meaning:"heavy",phonetic:"peh-zan-teh",category:"articulation",grade:6,definition:"Play in a heavy, weighty manner.",example:"The opening of Brahms Piano Concerto No. 1 is marked pesante for its massive weight."},
+  {term:"ben",lang:"Italian",meaning:"well",phonetic:"ben",category:"expression",grade:6,definition:"Well — used in phrases like ben marcato (well marked) or ben tenuto (well held).",example:"Ben marcato means every note should be clearly and strongly accented."},
+  {term:"ausdrucksvoll",lang:"German",meaning:"with expression",phonetic:"ows-drooks-fol",category:"expression",grade:6,definition:"Full of expression — the German equivalent of espressivo.",example:"Brahms and Schumann use ausdrucksvoll for movements of deep emotional content."},
+  {term:"einfach",lang:"German",meaning:"simple",phonetic:"ain-fakh",category:"expression",grade:6,definition:"Simple and unaffected in character.",example:"Schumann marks some Album for the Young pieces einfach for a natural, plain style."},
+  {term:"feierlich",lang:"German",meaning:"solemn, ceremonial",phonetic:"fai-er-likh",category:"expression",grade:6,definition:"Solemn and ceremonial in character.",example:"Wagner uses feierlich in his overtures for passages of grand, ceremonial weight."},
+  {term:"en dehors",lang:"French",meaning:"prominent, brought out",phonetic:"on deh-or",category:"expression",grade:6,definition:"Bring out — make the indicated melody prominent above the texture.",example:"Ravel writes en dehors for melodic lines that must project clearly above accompaniment."},
+  {term:"leger",lang:"French",meaning:"light",phonetic:"lay-zhay",category:"expression",grade:6,definition:"Light in touch and character — airy and unweighted.",example:"Debussy uses leger for passages that should float effortlessly without heaviness."},
+  {term:"souple",lang:"French",meaning:"supple, flexible",phonetic:"soo-pleh",category:"expression",grade:6,definition:"Supple and flexible — with an easy, natural flow.",example:"Faure uses souple in his chamber music for a pliant, elastic sense of phrase."},
+  {term:"con sordino",lang:"Italian",meaning:"with mute",phonetic:"kon sor-dee-no",category:"style",grade:7,definition:"Play with a mute — for strings this softens and veils the tone.",example:"The hushed string opening of Beethoven's Moonlight Sonata uses con sordino."},
+  {term:"senza",lang:"Italian",meaning:"without",phonetic:"sen-za",category:"expression",grade:7,definition:"Without — used in phrases like senza sordino (without mute).",example:"Senza misura means without strict metre — free, unmeasured playing."},
+  {term:"sempre",lang:"Italian",meaning:"always",phonetic:"sem-preh",category:"expression",grade:7,definition:"Always — indicates a direction should be maintained throughout, e.g. sempre piano.",example:"Sempre legato means maintain smooth legato playing throughout the entire passage."},
+  {term:"poco a poco",lang:"Italian",meaning:"little by little",phonetic:"poh-ko ah poh-ko",category:"expression",grade:7,definition:"Gradually, little by little — used with crescendo, accelerando, etc.",example:"Poco a poco crescendo means build the volume very gradually, bit by bit."},
+  {term:"quasi",lang:"Italian",meaning:"almost, as if",phonetic:"kwah-zee",category:"expression",grade:7,definition:"Almost, or as if — gives an approximate quality, e.g. quasi una fantasia.",example:"Beethoven marked his Moonlight Sonata quasi una fantasia — almost like a fantasy."},
+  {term:"stringendo",lang:"Italian",meaning:"pressing forward",phonetic:"strin-jen-do",category:"tempo",grade:7,definition:"Pressing forward urgently — a combination of accelerating and intensifying.",example:"Stringendo before a climax creates a dramatic surge of energy and tension."},
+  {term:"rallentando",lang:"Italian",meaning:"gradually slowing",phonetic:"ral-en-tan-do",category:"tempo",grade:7,definition:"Gradually slow down — similar to ritardando.",example:"A rallentando at the end of a phrase often signals the end of a section."},
+  {term:"rubato",lang:"Italian",meaning:"robbed time",phonetic:"roo-bah-to",category:"tempo",grade:7,definition:"A flexible approach to tempo where time is borrowed and repaid for expressive effect.",example:"Chopin's nocturnes are famous for their extensive use of rubato."},
+  {term:"innig",lang:"German",meaning:"heartfelt, intimate",phonetic:"in-ig",category:"expression",grade:7,definition:"Heartfelt and intimate — one of Schumann's favourite markings.",example:"Schumann uses innig in his Kinderszenen for movements of profound warmth."},
+  {term:"heftig",lang:"German",meaning:"vehement, violent",phonetic:"hef-tig",category:"expression",grade:7,definition:"Vehement and forceful in character.",example:"Mahler writes heftig for climactic passages of extreme emotional intensity."},
+  {term:"schwungvoll",lang:"German",meaning:"with swing, zest",phonetic:"shvoong-fol",category:"expression",grade:7,definition:"With swing and buoyant energy.",example:"Brahms uses schwungvoll for dance-like movements with a natural rhythmic lilt."},
+  {term:"bien chante",lang:"French",meaning:"well sung",phonetic:"byan shan-tay",category:"expression",grade:7,definition:"In a beautifully singing, lyrical manner.",example:"Faure and Saint-Saens use bien chante for instrumental lines of vocal beauty."},
+  {term:"cedez",lang:"French",meaning:"yield, give way",phonetic:"say-day",category:"tempo",grade:7,definition:"Yield slightly — a gentle relaxation of tempo, similar to rallentando.",example:"Debussy writes cedez at phrase endings where the melody gently eases back."},
+  {term:"alla breve",lang:"Italian",meaning:"cut time",phonetic:"ah-lah breh-veh",category:"form",grade:8,definition:"A time signature where the half note gets the beat — music feels in 2, not 4.",example:"Handel's Hallelujah Chorus opens in alla breve for its majestic drive."},
+  {term:"allargando",lang:"Italian",meaning:"broadening",phonetic:"ah-lar-gan-do",category:"tempo",grade:8,definition:"Gradually broadening — getting slower and usually louder simultaneously.",example:"An allargando in the final bars gives a piece a sweeping, expansive conclusion."},
+  {term:"calando",lang:"Italian",meaning:"dying away",phonetic:"kah-lan-do",category:"dynamics",grade:8,definition:"Gradually dying away in both speed and volume.",example:"A calando ending fades both dynamically and in tempo for a gentle close."},
+  {term:"semplice",lang:"Italian",meaning:"simple, plain",phonetic:"sem-plee-cheh",category:"expression",grade:8,definition:"Play in a simple, unaffected, and natural manner without exaggeration.",example:"Beethoven marks some of his most profound slow movements semplice for pure expression."},
+  {term:"lusingando",lang:"Italian",meaning:"coaxing, flattering",phonetic:"loo-sin-gan-do",category:"expression",grade:8,definition:"Play in a coaxing, caressing, insinuating manner.",example:"Brahms uses lusingando for tender, persuasive melodic lines."},
+  {term:"marziale",lang:"Italian",meaning:"martial, march-like",phonetic:"mar-tsee-ah-leh",category:"style",grade:8,definition:"In the style of a march — bold, rhythmically strong, and military in character.",example:"The trio section of a military march is sometimes marked marziale for firm character."},
+  {term:"come prima",lang:"Italian",meaning:"as before",phonetic:"koh-meh pree-mah",category:"tempo",grade:8,definition:"Return to the tempo and style used at the beginning of the piece.",example:"After a contrasting middle section, come prima restores the original character."},
+  {term:"ernst",lang:"German",meaning:"serious, earnest",phonetic:"airnst",category:"expression",grade:8,definition:"Serious and earnest in character.",example:"Brahms uses ernst for movements of deep philosophical gravity."},
+  {term:"getragen",lang:"German",meaning:"sustained, solemn",phonetic:"geh-trah-gen",category:"expression",grade:8,definition:"Sustained and solemn — carried along with weight and gravity.",example:"Wagner writes getragen for slow, processional passages in his music dramas."},
+  {term:"unruhig",lang:"German",meaning:"restless, uneasy",phonetic:"oon-roo-ig",category:"expression",grade:8,definition:"Restless and uneasy in character.",example:"Mahler uses unruhig for passages of psychological turbulence in his symphonies."},
+  {term:"zogernd",lang:"German",meaning:"hesitating",phonetic:"tsoh-gernd",category:"tempo",grade:8,definition:"Hesitating — a slight holding back of tempo for expressive effect.",example:"Wagner and Strauss use zogernd at moments of dramatic uncertainty or longing."},
+  {term:"avec sourdine",lang:"French",meaning:"with mute",phonetic:"ah-vek soor-deen",category:"style",grade:8,definition:"Play with a mute — produces a veiled, hushed, or nasal tone quality.",example:"Debussy specifies avec sourdine in his string writing for an ethereal, distant effect."},
+  {term:"presser",lang:"French",meaning:"hurry, press forward",phonetic:"preh-say",category:"tempo",grade:8,definition:"Press forward — gradually quicken the tempo.",example:"Saint-Saens uses presser un peu for passages building towards an exciting climax."},
+];
+
+let mF=[],mSI=null,mM='b',mU=null,mQ={terms:[],idx:0,score:0,answered:false};
+const mT='speechSynthesis' in window;
+function mLB(l){return l==='Italian'?'mt-it':l==='German'?'mt-de':'mt-fr';}
+
+function mtApply(){
+  const g=parseInt(document.getElementById('mt-grade').value);
+  const l=document.getElementById('mt-lang').value;
+  const c=document.getElementById('mt-cat').value;
+  mF=MT.filter(t=>t.grade<=g&&(l==='all'||t.lang===l)&&(c==='all'||t.category===c));
+  mSI=null;
+  document.getElementById('mt-dp').style.display='none';
+  mRG();
+  const lb=g===1?'Grade 1':'Grades 1\u20138';
+  document.getElementById('mt-count').textContent=mF.length+' term'+(mF.length!==1?'s':'')+' ('+lb+')';
+}
+
+function mtMode(m){
+  mM=m;
+  document.getElementById('mt-tab-b').classList.toggle('active',m==='b');
+  document.getElementById('mt-tab-q').classList.toggle('active',m==='q');
+  document.getElementById('mt-b').style.display=m==='b'?'block':'none';
+  document.getElementById('mt-q').style.display=m==='q'?'block':'none';
+  if(m==='q')mIQ();
+}
+
+function mRG(){
+  const g=document.getElementById('mt-grid');
+  if(!mF.length){g.innerHTML='<div class="mt-empty">No terms match these filters.</div>';return;}
+  g.innerHTML=mF.map((t,i)=>`<div class="mt-card${mSI===i?' sel':''}" onclick="mSD(${i})"><span class="mt-lb ${mLB(t.lang)}">${t.lang}</span><div class="mt-cg">Grade ${t.grade}</div><div class="mt-ct">${t.term}</div><div class="mt-cm">${t.meaning}</div><div class="mt-cc">${t.category}</div></div>`).join('');
+}
+
+function mSp(text,sid){
+  if(!mT)return;
+  if(mU){speechSynthesis.cancel();mU=null;}
+  const el=document.getElementById(sid);
+  const u=new SpeechSynthesisUtterance(text);
+  u.rate=0.85;
+  u.onstart=()=>{if(el)el.textContent='Playing\u2026';};
+  u.onend=()=>{if(el)el.textContent='';mU=null;};
+  u.onerror=()=>{if(el)el.textContent='';mU=null;};
+  mU=u; speechSynthesis.speak(u);
+}
+
+function mE(s){return(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+
+function mSD(i){
+  mSI=i; mRG();
+  const t=mF[i];
+  const panel=document.getElementById('mt-dp');
+  panel.style.display='block';
+  const pB=mT?`<button class="mt-abtn" onclick="mSp('${mE(t.term)}','mt-st')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Hear pronunciation</button><div class="mt-ast" id="mt-st"></div>`:'';
+  const eB=mT?`<button class="mt-abtn" onclick="mSp('${mE(t.example)}','mt-se')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Read aloud</button><div class="mt-ast" id="mt-se"></div>`:'';
+  panel.innerHTML=`<div class="mt-nav"><button class="mt-btn" onclick="mSD(${Math.max(0,i-1)})" ${i===0?'disabled':''}>&#8592; Prev</button><button class="mt-btn" onclick="mSD(${Math.min(mF.length-1,i+1)})" ${i===mF.length-1?'disabled':''}>Next &#8594;</button><span style="font-size:13px;color:#6b6b67;margin-left:8px">${i+1} of ${mF.length}</span><button class="mt-btn" style="margin-left:auto" onclick="mCD()">Close &#x2715;</button></div><div class="mt-dm"><span class="mt-lb ${mLB(t.lang)}">${t.lang}</span><span class="mt-chip">${t.category}</span><span class="mt-chip">Grade ${t.grade}</span></div><span class="mt-dp-h2">${t.term}</span><span class="mt-ph">/${t.phonetic}/</span>${pB}<span class="mt-ml">${t.meaning}</span><div class="mt-sec"><span class="mt-sec-h">Definition</span><span class="mt-sec-p">${t.definition}</span></div><div class="mt-sec"><span class="mt-sec-h">Musical example</span><div class="mt-ex">${t.example}</div>${eB}</div>`;
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function mCD(){
+  if(mU){speechSynthesis.cancel();mU=null;}
+  document.getElementById('mt-dp').style.display='none';
+  mSI=null; mRG();
+}
+
+function mIQ(){
+  if(mF.length<4){document.getElementById('mt-qe').style.display='block';document.getElementById('mt-qc').style.display='none';return;}
+  document.getElementById('mt-qe').style.display='none';
+  if(mU){speechSynthesis.cancel();mU=null;}
+  const s=[...mF].sort(()=>Math.random()-0.5);
+  mQ={terms:s.slice(0,Math.min(12,s.length)),idx:0,score:0,answered:false};
+  mSQ(); document.getElementById('mt-qc').style.display='block';
+}
+
+function mSQ(){
+  const{terms,idx,score}=mQ;
+  if(idx>=terms.length){
+    const p=score/terms.length;
+    document.getElementById('mt-qcard').innerHTML=`<div class="mt-qres">${score}/${terms.length}</div><p style="font-size:16px;color:#6b6b67;margin:0 0 1.5rem">${p===1?'Perfect score!':p>=0.7?'Well done!':'Keep practising!'}</p><button class="mt-btn" onclick="mIQ()">Try again &#8635;</button>`;
+    document.getElementById('mt-qscr').textContent='';
+    document.getElementById('mt-pf').style.width='100%';
+    return;
+  }
+  document.getElementById('mt-pf').style.width=Math.round((idx/terms.length)*100)+'%';
+  const t=terms[idx];
+  const md=Math.random()<0.5?'t2m':'m2t';
+  const q=md==='t2m'?t.term:t.meaning;
+  const ans=md==='t2m'?t.meaning:t.term;
+  const ot=mF.filter(x=>x!==t).sort(()=>Math.random()-0.5).slice(0,3);
+  const opts=[...ot.map(o=>md==='t2m'?o.meaning:o.term),ans].sort(()=>Math.random()-0.5);
+  const tB=mT&&md==='t2m'?`<button class="mt-abtn" style="margin:0 auto 1rem;display:inline-flex" onclick="mSp('${mE(t.term)}','mt-qs')"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polygon points="3,2 13,8 3,14" fill="currentColor"/></svg>Hear term</button><div class="mt-ast" id="mt-qs" style="margin-bottom:0.5rem"></div>`:'';
+  document.getElementById('mt-qcard').innerHTML=`<p style="font-size:12px;color:#6b6b67;margin:0 0 0.5rem">${md==='t2m'?'What does this term mean?':'Which term matches this meaning?'}</p><div class="mt-qq">${q}</div><div class="mt-qsub"><span class="mt-lb ${mLB(t.lang)}">${t.lang}</span>&nbsp; Grade ${t.grade}</div>${tB}<div class="mt-qopts">${opts.map(o=>`<button class="mt-qopt" onclick="mAQ(this,'${encodeURIComponent(o)}','${encodeURIComponent(ans)}')">${o}</button>`).join('')}</div>`;
+  document.getElementById('mt-qscr').textContent=`Question ${idx+1} of ${terms.length} \u00b7 Score: ${score}`;
+  mQ.answered=false;
+}
+
+function mAQ(btn,chosen,correct){
+  if(mQ.answered)return;
+  mQ.answered=true;
+  const c=decodeURIComponent(correct),ch=decodeURIComponent(chosen);
+  document.querySelectorAll('.mt-qopt').forEach(b=>{const txt=b.textContent.trim();if(txt===c)b.classList.add('correct');else if(txt===ch)b.classList.add('wrong');});
+  if(ch===c)mQ.score++;
+  setTimeout(()=>{mQ.idx++;mSQ();},1300);
+}
+
+mtApply();
+</script>
+</body>
+</html>
